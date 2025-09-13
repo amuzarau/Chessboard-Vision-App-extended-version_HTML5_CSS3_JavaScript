@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Тренажер видения шахматной доски</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="app" id="app">
+      <header>
+        <div class="title">
+          <h1><span>♟️ Тренажер видения шахматной доски</span></h1>
+        </div>
+        <div class="mode-tabs">
+          <button class="tab" data-mode="file" data-active="true">
+            Вертикаль: нечётная или чётная
+          </button>
+          <button class="tab" data-mode="rank">
+            Горизонталь: нечётная или чётная
+          </button>
+          <button class="tab" data-mode="square">
+            Клетка: чёрная или белая
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <!-- LEFT: prompt + answers -->
+        <section class="panel">
+          <div class="prompt" id="prompt">
+            <div class="badge" id="badge">Вертикаль • нечётная или чётная?</div>
+            <div class="big" id="question">a</div>
+            <div class="answer-choices" id="choices">
+              <button class="choice" data-choice="left">
+                Нечётная (← / O)
+              </button>
+              <button class="choice" data-choice="right">Чётная (→ / E)</button>
+            </div>
+            <div class="controls">
+              <span class="pill">Пробел = Старт/Стоп</span>
+              <span class="pill">Enter = Следующий</span>
+            </div>
+            <div class="feedback" id="feedback"></div>
+          </div>
+        </section>
+
+        <!-- RIGHT: score + start/stop + mini board + legends -->
+        <aside class="panel">
+          <div class="score" style="margin-bottom: 12px">
+            <div class="kpi">
+              <h4>Правильно</h4>
+              <div class="val" id="correct">0</div>
+            </div>
+            <div class="kpi">
+              <h4>Всего</h4>
+              <div class="val" id="total">0</div>
+            </div>
+            <div class="kpi">
+              <h4>Точность</h4>
+              <div class="val" id="accuracy">0%</div>
+            </div>
+          </div>
+
+          <!-- Start/Stop button -->
+          <button id="startstop" class="startstop" data-running="false">
+            Старт
+          </button>
+          <div style="height: 14px"></div>
+
+          <!-- Mini chessboard -->
+          <div class="mini-board" id="miniBoard"></div>
+
+          <!-- Legends -->
+          <div class="legend">
+            <span class="tag"
+              >горизонталь и вертикаль одинаковые → ◻︎ чёрная</span
+            >
+            <span class="tag">горизонталь и вертикаль разные → ◻︎ белая</span>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
